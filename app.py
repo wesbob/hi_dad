@@ -6,10 +6,6 @@ from flask_migrate import Migrate
 from datetime import datetime
 from dotenv import load_dotenv
 
-# LOAD ENVIRONMENT VARIABLES
-load_dotenv()
-
-
 # CREATE THE FLASK APP
 app = Flask(__name__)
 #FUNCTIONS FOR JINJA FILTERS
@@ -21,9 +17,9 @@ app.jinja_env.filters['nl2br'] = nl2br
 app.jinja_env.filters['md_links_to_html'] = md_links_to_html
 
 # CONFIGURE THE DATABASE
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or 'sqlite:///blog.db'
+app.config['DATABASE_URL'] = os.environ.get('DATABASE_URL') or 'sqlite:///blog.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-print(f"Using database: {app.config['SQLALCHEMY_DATABASE_URI']}")
+print(f"Using database: {app.config['DATABASE_URL']}")
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)

@@ -1,10 +1,19 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import os
+import re
 from flask_migrate import Migrate
 from datetime import datetime
 
 app = Flask(__name__)
+def nl2br(value):
+    return value.replace('\n', '<br>')
+def md_links_to_html(value):
+    return re.sub(r'\[(.+?)\]\((.+?)\)', r'<a href="\2" target="_blank">\1</a>', value)
+app.jinja_env.filters['nl2br'] = nl2br
+app.jinja_env.filters['md_links_to_html'] = md_links_to_html
+
+
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or 'sqlite:///blog.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

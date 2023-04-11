@@ -2,6 +2,6 @@
 
 {% block content %}
     <h1>{{ post.title }}</h1>
-    <p>{{ post.content }}</p>
+    {{ post.content|nl2br|md_links_to_html|safe }}
     <p>Posted on {{ post.date_created.strftime('%B %d, %Y') }}</p>
 {% endblock %}

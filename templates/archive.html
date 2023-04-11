@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Archive</h1>
+    {% for post in posts %}
+        <h2><a href="{{ url_for('view_post', post_id=post.id) }}">{{ post.title }}</a></h2>
+        <p>Posted on {{ post.date_created.strftime('%B %d, %Y') }}</p>
+    {% endfor %}
+{% endblock %}

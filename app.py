@@ -1,0 +1,43 @@
+from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+import os
+from flask_migrate import Migrate
+from datetime import datetime
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or 'sqlite:///blog.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+class BlogPost(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f'<BlogPost {self.title}>'
+
+@app.route('/')
+def index():
+    latest_post = BlogPost.query.order_by(BlogPost.date_created.desc()).first()
+    return render_template('index.html', post=latest_post)
+
+@app.route('/archive')
+def archive():
+    posts = BlogPost.query.order_by(BlogPost.date_created.desc()).all()
+    return render_template('archive.html', posts=posts)
+
+@app.route('/post/<int:post_id>')
+def view_post(post_id):
+    post = BlogPost.query.get(post_id)
+    if post:
+        return render_template('selected_post.html', post=post)
+    else:
+        return "Post not found", 404
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

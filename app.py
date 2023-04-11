@@ -6,6 +6,8 @@ from flask_migrate import Migrate
 from datetime import datetime
 from dotenv import load_dotenv
 
+load_dotenv()
+
 # CREATE THE FLASK APP
 app = Flask(__name__)
 #FUNCTIONS FOR JINJA FILTERS

@@ -1,0 +1,20 @@
+[
+    {
+        "id": 3,
+        "title": "Third Post",
+        "content": "Here's my latest post, bucko! Read em' and weap!",
+        "date_created": "2023-04-11T05:00:30.176213"
+    },
+    {
+        "id": 2,
+        "title": "Hey Bucko, Here's my second post!",
+        "content": "I tried to use some sf-ipsum, but it did not paste over right.",
+        "date_created": "2023-04-11T04:39:58.598099"
+    },
+    {
+        "id": 1,
+        "title": "Hey Bucko, Here's my Blog",
+        "content": "Time vortex, black hole around space elevator antimatter production plant. In subterranean dweller, light sail subspace communication with retrofuturism. Augmented reality and neural implant in cloning and holodeck. In the technocracy, virtual reality jump gate ansible..",
+        "date_created": "2023-04-11T04:20:59.636048"
+    }
+]

@@ -5,7 +5,20 @@ import json
 import tkinter as tk
 from tkinter import messagebox, simpledialog, Toplevel, Label, Entry, Text, END, Button
 
-# CRUD operations
+#--------------------MANUAL CRUD FUNCTIONS--------------------#
+# if __name__ == "__main__":
+#     # Add your CRUD operations here, for example:
+#     # create_post("Hey Bucko, Here's my second post!", "I tried to use some sf-ipsum, but it did not paste over right.")
+#     # list_posts()
+#     # update_post(1, "Updated Post Title", "Updated post content.")
+#     # delete_post(2)
+#     # count_posts()
+#     # write_posts_to_json()
+#     pass
+
+#--------------------CRUD FUNCTIONS--------------------#
+
+#CREATE
 def create_post(title, content):
     with app.app_context():
         new_post = BlogPost(title=title, content=content, date_created=datetime.utcnow())
@@ -14,12 +27,13 @@ def create_post(title, content):
         db.session.commit()
         print(f"New post '{title}' created.")
 
-
+#READ
 def get_post(post_id):
     with app.app_context():
         post = BlogPost.query.get(post_id)
         return post
 
+#UPDATE
 def update_post(post_id, new_title, new_content):
     with app.app_context():
         post = BlogPost.query.get(post_id)
@@ -31,6 +45,7 @@ def update_post(post_id, new_title, new_content):
         else:
             print(f"Post '{post_id}' not found.")
 
+#DELETE
 def delete_post(post_id):
     with app.app_context():
         post = BlogPost.query.get(post_id)
@@ -43,18 +58,22 @@ def delete_post(post_id):
             print(f"Post '{post_id}' not found.")
             return False
 
+#--------------------OTHER FUNCTIONS--------------------#
+
+#LIST
 def list_posts():
     with app.app_context():
         posts = BlogPost.query.order_by(BlogPost.date_created.desc()).all()
         return posts
 
 
-# Extra functions
+#COUNT
 def count_posts():
     with app.app_context():
         num_posts = BlogPost.query.count()
     print(f'There are {num_posts} posts in the database.')
 
+#WRITE TO JSON
 def write_posts_to_json():
     with app.app_context():
         posts = BlogPost.query.order_by(BlogPost.date_created.desc()).all()
@@ -70,20 +89,10 @@ def write_posts_to_json():
             json.dump(posts_json, f, indent=4)
 
 
-#Manually run the functions
-# if __name__ == "__main__":
-#     # Add your CRUD operations here, for example:
-#     # create_post("Hey Bucko, Here's my second post!", "I tried to use some sf-ipsum, but it did not paste over right.")
-#     # list_posts()
-#     # update_post(1, "Updated Post Title", "Updated post content.")
-#     # delete_post(2)
-#     # count_posts()
-#     # write_posts_to_json()
-#     pass
 
+#--------------------GUI FUNCTIONS--------------------#
 
-# GUI
-#centerWindow
+#CENTER WINDOW
 def center_window(window, width=None, height=None):
     window.update_idletasks()
 
@@ -128,14 +137,13 @@ def gui_create_post():
 
     create_post_window.mainloop()
 
-#Create Post GUI Success
+#CREATE POST SUCCESS
 def gui_create_post_success(create_post_window, title_entry, content_text):
     create_post(title_entry.get(), content_text.get("1.0", END))
     messagebox.showinfo("Success", "Post created successfully!")
     create_post_window.destroy()
 
-
-#Edit Post GUI
+#EDIT POST GUI
 def gui_edit_post():
     post_id = simpledialog.askinteger("Edit Post", "Enter the post ID to edit:")
 
@@ -173,14 +181,14 @@ def gui_edit_post():
         else:
             messagebox.showerror("Error", f"Post with ID {post_id} not found.")
 
-#Edit Post GUI Success
+#EDIT POST SUCCESS
 def gui_edit_post_success(edit_post_window, post_id, title_entry, content_text):
     update_post(post_id, title_entry.get(), content_text.get("1.0", END))
     messagebox.showinfo("Success", f"Post {post_id} updated successfully!")
     edit_post_window.destroy()
 
 
-#List Posts GUI
+#LIST POSTS GUI
 def gui_list_posts():
     with app.app_context():
         posts = list_posts()
@@ -200,7 +208,7 @@ def gui_list_posts():
 
             list_window.mainloop()
 
-#Delete Post GUI
+#DELETE POST GUI
 def gui_delete_post():
     post_id = simpledialog.askinteger("Delete Post", "Enter the post ID to delete:")
 
@@ -212,8 +220,7 @@ def gui_delete_post():
         else:
             messagebox.showerror("Error", f"Post with ID {post_id} not found.")
 
-
-#Main GUI
+#MAIN GUI
 if __name__ == "__main__":
     # Create a simple tkinter window
     root = tk.Tk()
@@ -236,8 +243,10 @@ if __name__ == "__main__":
 
     root.mainloop()
 
+#WRITE POSTS TO JSON
 write_posts_to_json()
 
+#HEROKU RUN COMMANDS WHEN DEPLOYING
 # import subprocess
 
 # def run_on_heroku(command):

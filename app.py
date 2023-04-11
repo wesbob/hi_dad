@@ -5,7 +5,9 @@ import re
 from flask_migrate import Migrate
 from datetime import datetime
 
+# CREATE THE FLASK APP
 app = Flask(__name__)
+#FUNCTIONS FOR JINJA FILTERS
 def nl2br(value):
     return value.replace('\n', '<br>')
 def md_links_to_html(value):
@@ -13,13 +15,14 @@ def md_links_to_html(value):
 app.jinja_env.filters['nl2br'] = nl2br
 app.jinja_env.filters['md_links_to_html'] = md_links_to_html
 
-
+# CONFIGURE THE DATABASE
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or 'sqlite:///blog.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
+# CREATE THE DATABASE MODEL
 class BlogPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
@@ -29,6 +32,7 @@ class BlogPost(db.Model):
     def __repr__(self):
         return f'<BlogPost {self.title}>'
 
+# CREATE THE ROUTES
 @app.route('/')
 def index():
     latest_post = BlogPost.query.order_by(BlogPost.date_created.desc()).first()

@@ -4,6 +4,7 @@ from datetime import datetime
 import json
 import tkinter as tk
 from tkinter import messagebox, simpledialog, Toplevel, Label, Entry, Text, END, Button
+import pytz
 
 #--------------------MANUAL CRUD FUNCTIONS--------------------#
 # if __name__ == "__main__":
@@ -18,10 +19,16 @@ from tkinter import messagebox, simpledialog, Toplevel, Label, Entry, Text, END,
 
 #--------------------CRUD FUNCTIONS--------------------#
 
+#DATE FUNCTION
+def get_date():
+    timeZ_Ce = pytz.timezone('America/Chicago') 
+    return datetime.now(timeZ_Ce).strftime("%m/%d/%Y %I:%M %p")
+
+
 #CREATE
 def create_post(title, content):
     with app.app_context():
-        new_post = BlogPost(title=title, content=content, date_created=datetime.utcnow())
+        new_post = BlogPost(title=title, content=content, date_created=get_date())
         db.session.add(new_post)
         db.session.flush()  # Add this line
         db.session.commit()
@@ -246,19 +253,11 @@ if __name__ == "__main__":
 #WRITE POSTS TO JSON
 write_posts_to_json()
 
-#HEROKU RUN COMMANDS WHEN DEPLOYING
-# import subprocess
 
-# def run_on_heroku(command):
-#     subprocess.run(["heroku", "run", "python", "-c", command])
 
-# # Usage example:
-# run_on_heroku("from app import create_post; create_post('New post title', 'New post content')")
 
-# if __name__ == "__main__":
-#     # Add your CRUD operations here, for example:
-#     # run_on_heroku("from app import create_post; create_post('New post title', 'New post content')")
-#     # run_on_heroku("from app import list_posts; list_posts()")
-#     # run_on_heroku("from app import update_post; update_post(1, 'Updated Post Title', 'Updated post content')")
-#     # run_on_heroku("from app import delete_post; delete_post(1)")
-#     pass
+
+
+
+
+

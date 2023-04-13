@@ -1,14 +1,14 @@
 [
     {
-        "id": 5,
-        "title": "a",
-        "content": "test\n",
-        "date_created": "2023-04-12T17:19:00"
+        "id": 8,
+        "title": "Today, I Style",
+        "content": "Today, I did some styling on my webpage. I think it looks pretty nice so far, very clean and simple. \n\nCheck out this page -> [JCNoel](https://jcnoel.dev)\n\n",
+        "date_created": "2023-04-12T20:21:00"
     },
     {
-        "id": 1,
-        "title": "Testing!",
-        "content": "IT WORKS! Hell yeah!\n\n",
-        "date_created": "2023-04-11T23:52:53.280536"
+        "id": 7,
+        "title": "Test Post",
+        "content": "Here is a test post. I am enjoying building this website!\n",
+        "date_created": "2023-04-12T20:19:00"
     }
 ]

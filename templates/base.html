@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>hi-dad</title>
+    <title >hi-dad</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="nav">
-        <button class="button button-first"><a href="{{ url_for('index') }}">Home</a></button>
-        <button class="button"><a href="{{ url_for('archive') }}">Archive</a></button>
-        <span id="arcTitle">hi dad</span>
+        <div class="button-container">
+            <button class="button button-first"><a href="{{ url_for('index') }}">Home</a></button>
+            <button class="button"><a href="{{ url_for('archive') }}">Archive</a></button>
+        </div>
+        <a href="https://github.com/wesbob" target="_blank" id="arcTitleLink"><span id="arcTitle">hi dad</span></a>
     </div>
+    
+    
     
     {% block content %}{% endblock %}
 </body>

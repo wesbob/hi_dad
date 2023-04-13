@@ -71,6 +71,16 @@ body {
         border: none;
       }
 
+      .rotating-image{
+        display: inline-block;
+        vertical-align: middle;
+        animation: rotation 4s infinite linear;
+        width: 50px;
+        height: 60px;
+        object-fit: cover;
+        margin-right: .5em;
+      }
+
 /* Update the selector to target the <a> element inside the <h2> */
 /* Post Entry */
 .post-entry {
@@ -101,6 +111,25 @@ body {
     color: #333333d5;
   }
  
+  #rotating-image {
+    display: inline-block;
+    animation: rotation 4s infinite linear;
+    width: 50px;
+    height: 60px;
+    margin-left: 10px;
+    /* object-fit: cover; */
+  }
+  
+  
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(359deg);
+    }
+  }
+  
   
   /* Media Queries */
   /* Phones (portrait, up to 480px) */

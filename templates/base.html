@@ -2,14 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>hi-dad</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <nav>
-        <a href="{{ url_for('index') }}">Home</a>
-        <a href="{{ url_for('archive') }}">Archive</a>
-    </nav>
+    <div class="nav">
+        <button class="button button-first"><a href="{{ url_for('index') }}">Home</a></button>
+        <button class="button"><a href="{{ url_for('archive') }}">Archive</a></button>
+        <span id="arcTitle">hi dad</span>
+    </div>
+    
     {% block content %}{% endblock %}
 </body>
 </html>
+

@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 {% block content %}
-
+<h1 id="archiveTitle">Archive</h1>
 {% for post in posts %}
-<div class="post-entry">
+<div class="post-entry"> 
     <h2 class="post-title"><a href="{{ url_for('view_post', post_id=post.id) }}">{{ post.title }}</a></h2>
     <span id="date">- {{ post.date_created.strftime('%m/%d/23') }}</span>
 </div>
+
 {% endfor %}
 
 

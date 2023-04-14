@@ -10,13 +10,14 @@ body {
 h1 {
   color: #333333d5;
   font-family: monospace;
-  margin-left: 1em;
+
 }
 
 p {
   color: #333333d5;
   font-family: monospace;
-  margin-left: 2.5em;
+  margin-left: auto;
+  /* text-align: justify; */
 }
 
 /* Navigation */
@@ -87,7 +88,7 @@ p {
 .post-entry {
   display: flex;
   align-items: baseline;
-  margin-left: 25px;
+  margin-left: 5px;
   
 }
 
@@ -162,13 +163,14 @@ p {
   h1 {
     font-size: 1.5em;
     color: #333333d5;
-    margin-left: 13px;
+    margin-left: auto;
   }
 
   p {
     color: #333333d5;
     font-family: monospace;
-    margin-left: 15px;
+    margin-left: auto;
+    text-align: left;
   }
 
   /* Tablets (portrait, 481px to 768px) */

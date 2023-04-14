@@ -1,14 +1,14 @@
 [
     {
-        "id": 8,
-        "title": "Today, I Style",
-        "content": "Today, I did some styling on my webpage. I think it looks pretty nice so far, very clean and simple. \n\nCheck out this page -> [JCNoel](https://jcnoel.dev)\n\n",
-        "date_created": "2023-04-12T20:21:00"
+        "id": 3,
+        "title": "James is the worst!!",
+        "content": "I am the best, says ME!\n\n[link](https://github.com/wesbob/wes.github.io)\n\n\nWell, that was fun.\n",
+        "date_created": "2023-04-13T10:33:42.752481"
     },
     {
-        "id": 7,
-        "title": "Test Post",
-        "content": "Here is a test post. I am enjoying building this website!\n",
-        "date_created": "2023-04-12T20:19:00"
+        "id": 1,
+        "title": "My post",
+        "content": "Okay so this is pretty sweet. How bout' if I want to link some stuff?\n\nhttps://pypi.org/project/flask-ngrok/\n\n[ngrok](https://ngrok.com/)\n\n\n\n",
+        "date_created": "2023-04-11T16:09:09.006597"
     }
 ]

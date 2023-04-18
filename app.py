@@ -32,7 +32,7 @@ print(f"Using database: {app.config['SQLALCHEMY_DATABASE_URI']}")
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-# CREATE THE DATABASE MODEL
+# CREATE THE DATABASE MODELS
 class BlogPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
@@ -41,6 +41,17 @@ class BlogPost(db.Model):
 
     def __repr__(self):
         return f'<BlogPost {self.title}>'
+    
+
+class ImagePost(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    image_url = db.Column(db.String(255), nullable=False)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f'<ImagePost {self.title}>'
+
 
 # CREATE THE ROUTES
 @app.route('/')
@@ -65,6 +76,10 @@ def view_post(post_id):
 def page_not_found(e):
     return render_template('404.html'), 404
 
+@app.route('/img_gal')
+def image_gallery():
+    image_posts = ImagePost.query.order_by(ImagePost.date_created.desc()).all()
+    return render_template('img_gal.html', image_posts=image_posts)
 
 
 if __name__ == '__main__':

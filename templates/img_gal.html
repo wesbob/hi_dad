@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="image-gallery">
+  {% for image_post in image_posts %}
+  <div class="image-gallery-item">
+    <img src="{{ image_post.image_url }}" alt="{{ image_post.title }}">
+    <div class="info-container">
+      <h3 class="title">{{ image_post.title }}</h3>
+      <p class="date">{{ image_post.date_created.strftime('%m-%d-%Y') }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

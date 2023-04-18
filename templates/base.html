@@ -19,8 +19,11 @@
             <a href="https://github.com/wesbob" target="_blank" id="arcTitleLink"><span id="arcTitle">hi dad</span></a>
         </div>
     </div>
-    
+    {% block wrapper %}
+    <div class="{{ 'content' if not no_content_style else '' }}">
     {% block content %}{% endblock %}
+</div>
+{% endblock %}
 </body>
 </html>
 

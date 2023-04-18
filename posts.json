@@ -12,9 +12,9 @@
         "date_created": "2023-04-12T20:21:00"
     },
     {
-        "id": 7,
-        "title": "Test Post",
-        "content": "Here is a test post. I am enjoying building this website!\n",
-        "date_created": "2023-04-12T20:19:00"
+        "id": 1,
+        "title": "My post",
+        "content": "Okay so this is pretty sweet. How bout' if I want to link some stuff?\n\nhttps://pypi.org/project/flask-ngrok/\n\n[ngrok](https://ngrok.com/)\n\n\n\n",
+        "date_created": "2023-04-11T16:09:09.006597"
     }
 ]

@@ -1,5 +1,17 @@
 [
     {
+        "id": 11,
+        "title": "Benji's Doodles, lol.",
+        "content": "I've been wanting a place to store my son's doodles because they keep piling up on a shelf in my office and, well, what better place than to store them here on my site. I added a new table to my Postgres database to store my image links and made a script that will manage my images in the database. Things are starting to come together at hi-dad.lol I tell ya!\n\nI've been doing some more editing to the CSS stylings of this thing and added a nav burger bar. If you click the burger, you'll be able to navigate to the archive and to the newly added 'Doodles' page as well.\n\n",
+        "date_created": "2023-04-18T14:15:00"
+    },
+    {
+        "id": 10,
+        "title": "AI Drake, lol. ",
+        "content": "Drake made headlines when he spoke out on AI after an AI generated song went viral featuring his voice over a track by some lady called Ice Spice. He stated, \"This is the final straw AI...\" as if he was personally taking on an AI model in a rap battle. However, it's clear that AI-generated music is only going to become a common trend, and it may give the average person the power to create hit songs without spending tons of money on studio recording. Whether this is a good thing or not isn\u2019t for me to decide. You could argue that it takes away from the creativity and artistry of the music industry, while regular folks see it as a way to get their own recognition. I was informed the other day by [JCN](https://www.jcnoel.dev) that over 1 million songs are released each year, so I can only expect that number to increase dramatically with AI generated music becoming more readily available to creators. Regardless, AI is taking a toll on the creative industry. I can only imagine more artists will be coming out against AI generated music, and it will be interesting to see how this trend plays out in the coming weeks and months. As for me, I can't help but find it all a bit hilarious.\n\n",
+        "date_created": "2023-04-16T10:40:00"
+    },
+    {
         "id": 9,
         "title": "New stuff!",
         "content": "Today's been good. I added a lil' image to my site, and made it rotate, lol. Probably won't be keeping it up on there because it's quite distracting. If anything, I will possibly lower the speed of it and see how that looks. I have to go spend some time with the family though, as I have been spending all of my time creating this site. Off to the garage for a toke, and then its lego time. \n\n-Peace\n",
@@ -12,9 +24,9 @@
         "date_created": "2023-04-12T20:21:00"
     },
     {
-        "id": 1,
-        "title": "My post",
-        "content": "Okay so this is pretty sweet. How bout' if I want to link some stuff?\n\nhttps://pypi.org/project/flask-ngrok/\n\n[ngrok](https://ngrok.com/)\n\n\n\n",
-        "date_created": "2023-04-11T16:09:09.006597"
+        "id": 7,
+        "title": "Test Post",
+        "content": "Here is a test post. I am enjoying building this website!\n",
+        "date_created": "2023-04-12T20:19:00"
     }
 ]

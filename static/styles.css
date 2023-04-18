@@ -150,6 +150,15 @@ p {
 }
 
 /* Image Gallery */
+.dood {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    margin-top: 10px;
+
+  }
+
 .image-gallery {
     display: flex;
     flex-wrap: wrap;

@@ -119,14 +119,15 @@ p {
 
 
 .content {
-  margin-left: 35px;
-  margin-right: 35px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 35px;
   margin-bottom: 35px;
   background-color: #ffffff;
   border-radius: 5px;
   min-height: fit-content;
   padding: 1em;
+  max-width: 680px;
 }
 
 #archiveTitle {
@@ -197,7 +198,45 @@ p {
     margin: 0;
   }
   
-
+  .hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .hamburger-bar {
+    width: 100%;
+    height: 3px;
+    background-color: #d3d2d2;
+    border-radius: 2px;
+  }
+  
+  .mobile-nav {
+    display: none;
+  }
+  
+  .mobile-nav-button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: .5em 1em;
+    margin-bottom: .5em;
+  }
+  
+  .mobile-nav-button a {
+    display: block;
+    width: 100%;
+  }
+  
 
   /* Media Queries */
   /* Phones (portrait, up to 480px) */
@@ -213,14 +252,60 @@ p {
         font-family: 'Roboto', sans-serif;
         margin-left: 15px;
     }
+    .content {
+        margin-left: 35px;
+        margin-right: 35px;
+      }
+    
     
     .image-gallery-item {
         flex-basis: calc(100% - 1em);
         }
-      }
-  
+
+    .hamburger-menu {
+        display: flex;
+        }
+    
+        .nav .button-container {
+        display: none;
+        }
+    
+        .mobile-nav {
+            position: fixed;
+            left: -250px; /* Width of the sliding panel */
+            top: 0;
+            width: 150px; /* Width of the sliding panel */
+            height: 100%;
+            background-color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-top: 1em;
+            padding-left: 0em;
+            transition: left 0.3s ease;
+          }
+    
+        .mobile-nav-button a {
+        color: #d3d2d2;
+        text-decoration: none;
+        padding: 10px;
+        width: auto;
+        }
+    
+        .mobile-nav-button a:hover {
+        background-color: #5e5480;
+        color: #d3d2d2;
+        }
+
+  }
+
   /* Tablets (portrait, 481px to 768px) */
   @media screen and (min-width: 481px) and (max-width: 768px) {
+    .content {
+        margin-left: 35px;
+        margin-right: 35px;
+      }
+    
     h1 {
       font-size: 1.75em;
     }
@@ -232,3 +317,4 @@ p {
         flex-basis: calc(50% - 1em);
       }
     }
+

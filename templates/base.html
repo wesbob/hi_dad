@@ -9,6 +9,18 @@
 </head>
 <body>
     <div class="nav">
+        <button class="hamburger-menu">
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+        </button>
+        
+        <div class="mobile-nav">
+            <button class="mobile-nav-button"><a href="{{ url_for('index') }}">Home</a></button>
+            <button class="mobile-nav-button"><a href="{{ url_for('archive') }}">Archive</a></button>
+            <button class="mobile-nav-button"><a href="{{ url_for('image_gallery') }}">Doodles</a></button>
+        </div>
+        
         <div class="button-container">
             <button class="button button-first"><a href="{{ url_for('index') }}">Home</a></button>
             <button class="button"><a href="{{ url_for('archive') }}">Archive</a></button>
@@ -22,8 +34,30 @@
     {% block wrapper %}
     <div class="{{ 'content' if not no_content_style else '' }}">
     {% block content %}{% endblock %}
-</div>
-{% endblock %}
+    </div>
+    {% endblock %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const hamburgerMenu = document.querySelector(".hamburger-menu");
+          const mobileNav = document.querySelector(".mobile-nav");
+        
+          hamburgerMenu.addEventListener("click", function() {
+            if (mobileNav.style.left === "0px") {
+              mobileNav.style.left = "-250px"; // Hide the panel
+            } else {
+              mobileNav.style.left = "0px"; // Show the panel
+            }
+          });
+        
+          document.addEventListener("click", function(event) {
+            // Check if the click target is not inside the mobileNav, and not the hamburgerMenu
+            if (!mobileNav.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+              mobileNav.style.left = "-250px"; // Hide the panel
+            }
+          });
+        });
+        </script>
+        
+        
 </body>
 </html>
-

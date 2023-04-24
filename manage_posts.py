@@ -120,7 +120,7 @@ def center_window(window, width=None, height=None):
 def gui_create_post():
     create_post_window = Toplevel(root)
     create_post_window.title("Create Post")
-    center_window(create_post_window, width=400, height=300)
+    center_window(create_post_window, width=600, height=300)
 
     title_label = Label(create_post_window, text="Title:")
     title_label.pack(pady=(10, 0))
@@ -131,7 +131,7 @@ def gui_create_post():
     content_label = Label(create_post_window, text="Content:")
     content_label.pack(pady=(0, 0))
 
-    content_text = Text(create_post_window, width=50, height=10)
+    content_text = Text(create_post_window, width=60, height=10)
     content_text.pack(pady=(0, 10))
 
     create_button = Button(
@@ -160,7 +160,7 @@ def gui_edit_post():
         if post:
             edit_post_window = Toplevel(root)
             edit_post_window.title("Edit Post")
-            center_window(edit_post_window, width=400, height=300)
+            center_window(edit_post_window, width=600, height=300)
 
             title_label = Label(edit_post_window, text="Title:")
             title_label.pack(pady=(10, 0))
@@ -172,7 +172,7 @@ def gui_edit_post():
             content_label = Label(edit_post_window, text="Content:")
             content_label.pack(pady=(0, 0))
 
-            content_text = Text(edit_post_window, width=50, height=10)
+            content_text = Text(edit_post_window, width=60, height=10)
             content_text.insert("1.0", post.content)
             content_text.pack(pady=(0, 10))
 

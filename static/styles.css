@@ -187,8 +187,8 @@ p {
   
   .image-gallery-item .info-container {
     text-align: center;
-    /* margin-top: 0.5em;
-    margin-bottom: .5em; */
+    width: 100%; /* Add this line to fix the width */
+  height: 60px; /* Add this line to fix the height */
   }
   
   .image-gallery-item .title {

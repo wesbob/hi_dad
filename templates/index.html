@@ -3,9 +3,9 @@
 {% block content %}
     {% if post %}
         <h1>{{ post.title }}</h1>
-        {% if post.image %}
+        {% if <post class="image_path"></post> %}
         <div class="post-image">
-          <img src="{{ post.image }}" alt="{{ post.title }}">
+          <img src="{{ post.image_path }}" alt="{{ post.title }}">
         </div>
         {% endif %}
         <p>{{ post.content|nl2br|md_links_to_html|safe }}</p>

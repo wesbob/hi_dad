@@ -3,6 +3,11 @@
 {% block content %}
     {% if post %}
         <h1>{{ post.title }}</h1>
+        {% if post.image %}
+        <div class="post-image">
+          <img src="{{ post.image }}" alt="{{ post.title }}">
+        </div>
+        {% endif %}
         <p>{{ post.content|nl2br|md_links_to_html|safe }}</p>
         <p>Posted on {{ post.date_created.strftime('%B %d, %Y') }}</p>
     {% else %}

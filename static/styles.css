@@ -117,6 +117,17 @@ p {
   margin-top: -30px; /* Change this value to adjust the space between posts */
 }
 
+.post-image {
+  max-width: 100%;
+  margin-bottom: 1em;
+}
+
+.post-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 
 .content {
   margin-left: auto;

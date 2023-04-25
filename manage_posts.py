@@ -26,9 +26,9 @@ def get_date():
 
 
 #CREATE
-def create_post(title, content):
+def create_post(title, content, image_path=None):
     with app.app_context():
-        new_post = BlogPost(title=title, content=content, date_created=get_date())
+        new_post = BlogPost(title=title, content=content, image_path=image_path, date_created=get_date())
         db.session.add(new_post)
         db.session.flush()  # Add this line
         db.session.commit()
@@ -41,12 +41,13 @@ def get_post(post_id):
         return post
 
 #UPDATE
-def update_post(post_id, new_title, new_content):
+def update_post(post_id, new_title, new_content, new_image_path=None):
     with app.app_context():
         post = BlogPost.query.get(post_id)
         if post:
             post.title = new_title
             post.content = new_content
+            post.image_path = new_image_path
             db.session.commit()
             print(f"Post '{post_id}' updated.")
         else:
@@ -134,10 +135,16 @@ def gui_create_post():
     content_text = Text(create_post_window, width=60, height=10)
     content_text.pack(pady=(0, 10))
 
+    image_label = Label(create_post_window, text="Image Path:")
+    image_label.pack(pady=(0, 0))
+
+    image_entry = Entry(create_post_window, width=50)
+    image_entry.pack(pady=(0, 10))
+
     create_button = Button(
     create_post_window,
     text="Create Post",
-    command=lambda: gui_create_post_success(create_post_window, title_entry, content_text),
+    command=lambda: gui_create_post_success(create_post_window, title_entry, content_text, image_entry),
 )
 
     create_button.pack()
@@ -145,8 +152,8 @@ def gui_create_post():
     create_post_window.mainloop()
 
 #CREATE POST SUCCESS
-def gui_create_post_success(create_post_window, title_entry, content_text):
-    create_post(title_entry.get(), content_text.get("1.0", END))
+def gui_create_post_success(create_post_window, title_entry, content_text, image_entry):
+    create_post(title_entry.get(), content_text.get("1.0", END), image_entry.get())
     messagebox.showinfo("Success", "Post created successfully!")
     create_post_window.destroy()
 
@@ -176,10 +183,17 @@ def gui_edit_post():
             content_text.insert("1.0", post.content)
             content_text.pack(pady=(0, 10))
 
+            image_label = Label(edit_post_window, text="Image Path:")
+            image_label.pack(pady=(0, 0))
+
+            image_entry = Entry(edit_post_window, width=50)
+            image_entry.insert(0, post.image_path)
+            image_entry.pack(pady=(0, 10))
+
             save_button = Button(
                 edit_post_window,
                 text="Save Changes",
-                command=lambda: gui_edit_post_success(edit_post_window, post.id, title_entry, content_text),
+                command=lambda: gui_edit_post_success(edit_post_window, post.id, title_entry, content_text, image_entry),
             )
 
             save_button.pack()
@@ -189,8 +203,8 @@ def gui_edit_post():
             messagebox.showerror("Error", f"Post with ID {post_id} not found.")
 
 #EDIT POST SUCCESS
-def gui_edit_post_success(edit_post_window, post_id, title_entry, content_text):
-    update_post(post_id, title_entry.get(), content_text.get("1.0", END))
+def gui_edit_post_success(edit_post_window, post_id, title_entry, content_text, image_entry):
+    update_post(post_id, title_entry.get(), content_text.get("1.0", END), image_entry.get())
     messagebox.showinfo("Success", f"Post {post_id} updated successfully!")
     edit_post_window.destroy()
 

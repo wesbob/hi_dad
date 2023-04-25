@@ -178,12 +178,14 @@ p {
   
   .image-gallery-item img {
     width: 100%;
-    height: auto;
+    height: 200px; /* Set a fixed height for the images */
     display: block;
     border-radius: 5px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    object-fit: cover; /* Add this line to maintain the aspect ratio */
   }
+  
   
   .image-gallery-item .info-container {
     text-align: center;

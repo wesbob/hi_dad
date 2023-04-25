@@ -121,7 +121,7 @@ def center_window(window, width=None, height=None):
 def gui_create_post():
     create_post_window = Toplevel(root)
     create_post_window.title("Create Post")
-    center_window(create_post_window, width=600, height=300)
+    center_window(create_post_window, width=600, height=400)
 
     title_label = Label(create_post_window, text="Title:")
     title_label.pack(pady=(10, 0))

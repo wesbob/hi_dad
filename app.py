@@ -85,6 +85,7 @@ def image_gallery():
     image_posts = ImagePost.query.order_by(ImagePost.date_created.desc()).all()
     return render_template('img_gal.html', image_posts=image_posts)
 
+
 @app.route('/api/posts', methods=['GET'])
 def api_posts():
     posts = get_posts()  # Assuming you have a function that fetches all posts from the database

@@ -95,7 +95,7 @@ def api_posts():
             'id': post.id,
             'title': post.title,
             'content': post.content,
-            'img': post.image_path,
+            "img": post.image_path or "No image associated with this post",
             'date_created': post.date_created.isoformat()
         })
 

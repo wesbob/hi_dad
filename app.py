@@ -1,11 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
 import os
 import re
+from flask import jsonify
+from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from datetime import datetime
 from dotenv import load_dotenv
-
 load_dotenv()
 
 DATABASE_URL = os.environ.get('DATABASE_URL').replace(
@@ -54,6 +54,9 @@ class ImagePost(db.Model):
         return f'<ImagePost {self.title}>'
 
 
+def get_posts():
+    return BlogPost.query.order_by(BlogPost.date_created.desc()).all()
+
 # CREATE THE ROUTES
 @app.route('/')
 def index():
@@ -82,6 +85,21 @@ def image_gallery():
     image_posts = ImagePost.query.order_by(ImagePost.date_created.desc()).all()
     return render_template('img_gal.html', image_posts=image_posts)
 
+@app.route('/api/posts', methods=['GET'])
+def api_posts():
+    posts = get_posts()  # Assuming you have a function that fetches all posts from the database
+    json_posts = []
+
+    for post in posts:
+        json_posts.append({
+            'id': post.id,
+            'title': post.title,
+            'content': post.content,
+            'img': post.image_path,
+            'date_created': post.date_created.isoformat()
+        })
+
+    return jsonify(json_posts)
 
 if __name__ == '__main__':
     app.run(debug=True)

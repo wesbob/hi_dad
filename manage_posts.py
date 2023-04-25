@@ -91,6 +91,8 @@ def write_posts_to_json():
                 "id": post.id,
                 "title": post.title,
                 "content": post.content,
+                #if post.image_path is null then set to empty string
+                "img": post.image_path or "",
                 "date_created": post.date_created.isoformat()
             })
         with open("posts.json", "w") as f:
@@ -219,12 +221,12 @@ def gui_list_posts():
         else:
             list_window = Toplevel(root)
             list_window.title("List of Posts")
-            center_window(list_window, width=400, height=300)
+            center_window(list_window, width=600, height=300)
 
             for post in posts:
                 post_label = Label(
                     list_window,
-                    text=f"ID: {post.id}, Title: {post.title}, Date: {post.date_created}",
+                    text=f"ID: {post.id}, Title: {post.title}, Date: {post.date_created}, Image Path: {post.image_path}",
                 )
                 post_label.pack(pady=(0, 5))
 

@@ -32,7 +32,7 @@ print(f"Using database: {app.config['SQLALCHEMY_DATABASE_URI']}")
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-# CREATE THE DATABASE MODELS
+# CREATE THE DATABASE MODELS_
 class BlogPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)

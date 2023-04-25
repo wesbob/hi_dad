@@ -167,7 +167,7 @@ def gui_edit_post():
         if post:
             edit_post_window = Toplevel(root)
             edit_post_window.title("Edit Post")
-            center_window(edit_post_window, width=600, height=300)
+            center_window(edit_post_window, width=600, height=400)
 
             title_label = Label(edit_post_window, text="Title:")
             title_label.pack(pady=(10, 0))
@@ -187,7 +187,8 @@ def gui_edit_post():
             image_label.pack(pady=(0, 0))
 
             image_entry = Entry(edit_post_window, width=50)
-            image_entry.insert(0, post.image_path)
+            if post.image_path:
+                image_entry.insert(0, post.image_path)
             image_entry.pack(pady=(0, 10))
 
             save_button = Button(

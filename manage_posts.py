@@ -6,19 +6,6 @@ import tkinter as tk
 from tkinter import messagebox, simpledialog, Toplevel, Label, Entry, Text, END, Button
 import pytz
 
-#--------------------MANUAL CRUD FUNCTIONS--------------------#
-# if __name__ == "__main__":
-#     # Add your CRUD operations here, for example:
-#     # create_post("Hey Bucko, Here's my second post!", "I tried to use some sf-ipsum, but it did not paste over right.")
-#     # list_posts()
-#     # update_post(1, "Updated Post Title", "Updated post content.")
-#     # delete_post(2)
-#     # count_posts()
-#     # write_posts_to_json()
-#     pass
-
-#--------------------CRUD FUNCTIONS--------------------#
-
 #DATE FUNCTION
 def get_date():
     timeZ_Ce = pytz.timezone('America/Chicago') 
@@ -81,25 +68,6 @@ def count_posts():
         num_posts = BlogPost.query.count()
     print(f'There are {num_posts} posts in the database.')
 
-#WRITE TO JSON
-def write_posts_to_json():
-    with app.app_context():
-        posts = BlogPost.query.order_by(BlogPost.date_created.desc()).all()
-        posts_json = []
-        for post in posts:
-            posts_json.append({
-                "id": post.id,
-                "title": post.title,
-                "content": post.content,
-                #if post.image_path is null then set to empty string
-                "img": post.image_path or "",
-                "date_created": post.date_created.isoformat()
-            })
-        with open("posts.json", "w") as f:
-            json.dump(posts_json, f, indent=4)
-
-
-
 #--------------------GUI FUNCTIONS--------------------#
 
 #CENTER WINDOW
@@ -134,7 +102,7 @@ def gui_create_post():
     content_label = Label(create_post_window, text="Content:")
     content_label.pack(pady=(0, 0))
 
-    content_text = Text(create_post_window, width=60, height=10)
+    content_text = Text(create_post_window, width=65, height=10)
     content_text.pack(pady=(0, 10))
 
     image_label = Label(create_post_window, text="Image Path:")
@@ -221,7 +189,7 @@ def gui_list_posts():
         else:
             list_window = Toplevel(root)
             list_window.title("List of Posts")
-            center_window(list_window, width=600, height=300)
+            center_window(list_window, width=800, height=300)
 
             for post in posts:
                 post_label = Label(
@@ -266,13 +234,6 @@ if __name__ == "__main__":
     center_window(root, width=300, height=200)
 
     root.mainloop()
-
-#WRITE POSTS TO JSON
-write_posts_to_json()
-
-
-
-
 
 
 

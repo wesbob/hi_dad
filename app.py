@@ -1,7 +1,7 @@
 import os
 import re
 from flask import jsonify
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, abort
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from datetime import datetime
@@ -85,10 +85,14 @@ def image_gallery():
     image_posts = ImagePost.query.order_by(ImagePost.date_created.desc()).all()
     return render_template('img_gal.html', image_posts=image_posts)
 
-
+API_KEY = os.environ.get('API_KEY')
 @app.route('/api/posts', methods=['GET'])
 def api_posts():
-    posts = get_posts()  # Assuming you have a function that fetches all posts from the database
+    api_key = request.headers.get('API_KEY')
+    if not api_key or api_key != API_KEY:
+        abort(401), "Unauthorized, you do not have an API key bozo!"
+
+    posts = get_posts()
     json_posts = []
 
     for post in posts:

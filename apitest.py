@@ -1,10 +1,17 @@
 import requests
 import json
 
-url = "https://www.hi-dad.lol/api/posts"
 
-response = requests.get(url)
+url = "http://127.0.0.1:5000/api/posts"
+headers = {'API_KEY': 'd6736be5-c6d2-4b0a-b9a7-a266ff96cebe'}
+response = requests.get(url, headers=headers)
 print(response.status_code)
 
-posts = json.loads(response.text)
-print(posts)
+
+
+# for post in posts:
+#     print(post['title'])
+#     print(post['content'])
+#     print(post['img'])
+#     print(post['date_created'])
+#     print('----------------------------------')

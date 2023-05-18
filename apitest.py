@@ -2,8 +2,8 @@ import requests
 import json
 
 
-url = "http://www.hi-dad.lol/api/posts"
-headers = {'API_KEY': 'd6736be5-c6d2-4b0a-b9a7-a266ff96cebe'}
+url = "https://www.hi-dad.lol/api/posts"
+headers = {'API_KEY': "poopybutthole"}
 response = requests.get(url, headers=headers)
 print(response)
 

@@ -85,10 +85,10 @@ def image_gallery():
     image_posts = ImagePost.query.order_by(ImagePost.date_created.desc()).all()
     return render_template('img_gal.html', image_posts=image_posts)
 
-API_KEY = os.environ.get('API_KEY')
+API_KEY = os.environ.get('KEY')
 @app.route('/api/posts', methods=['GET'])
 def api_posts():
-    api_key = request.headers.get('API_KEY')
+    api_key = request.headers.get('KEY')
     if not api_key or api_key != API_KEY:
         abort(401), "Unauthorized, you do not have an API key bozo!"
 
